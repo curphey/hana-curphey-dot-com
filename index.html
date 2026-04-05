@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hana Curphey</title>
+  <meta name="description" content="Hana Curphey — aspiring barrister with a focus on criminal and civil law. Durham law graduate, Gray's Inn scholar, and County Court Advocate seeking pupillage.">
+  <meta property="og:title" content="Hana Curphey">
+  <meta property="og:description" content="Aspiring barrister with a focus on criminal and civil law. Durham law graduate, Gray's Inn scholar, and County Court Advocate seeking pupillage.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://hanacurphey.com">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: #f0ebe3;
+      color: #3a3028;
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    /* Subtle paper texture */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 28px,
+        rgba(0,0,0,0.012) 28px,
+        rgba(0,0,0,0.012) 29px
+      );
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 660px;
+      margin: 0 auto;
+      padding: 5rem 2rem 3rem;
+    }
+
+    /* ─── Header ─── */
+    .header {
+      display: flex;
+      align-items: flex-start;
+      gap: 2.5rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .photo {
+      width: 160px;
+      height: 200px;
+      flex-shrink: 0;
+      overflow: hidden;
+      box-shadow: 3px 3px 12px rgba(0,0,0,0.08);
+    }
+
+    .photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+
+    .header-text {
+      padding-top: 0.25rem;
+    }
+
+    h1 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 2.2rem;
+      font-weight: 400;
+      color: #2a2218;
+      letter-spacing: 0.015em;
+      line-height: 1.1;
+    }
+
+    .rule {
+      width: 44px;
+      height: 1px;
+      background: #b0a490;
+      margin: 0.9rem 0;
+    }
+
+    .tagline {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      color: #5a5045;
+      font-style: italic;
+      line-height: 1.55;
+      max-width: 380px;
+    }
+
+    .contact {
+      margin-top: 1rem;
+      font-size: 0.72rem;
+      color: #9a8f80;
+      letter-spacing: 0.04em;
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    .contact a {
+      color: #7a6f60;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .contact a:hover {
+      color: #3a3028;
+    }
+
+    .contact .dot {
+      width: 3px;
+      height: 3px;
+      background: #c0b8a8;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    /* ─── Accordion ─── */
+    .accordion {
+      margin-top: 0.5rem;
+    }
+
+    .accordion-item {
+      border-top: 1px solid #d4cbb8;
+    }
+
+    .accordion-item:last-child {
+      border-bottom: 1px solid #d4cbb8;
+    }
+
+    .accordion-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s;
+    }
+
+    .accordion-header:hover {
+      color: #2a2218;
+    }
+
+    .accordion-header:hover .accordion-title {
+      color: #2a2218;
+    }
+
+    .accordion-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 500;
+      color: #4a4035;
+      letter-spacing: 0.03em;
+      transition: color 0.2s;
+    }
+
+    .accordion-icon {
+      font-size: 1.2rem;
+      color: #b0a490;
+      transition: transform 0.3s ease, color 0.2s;
+      font-weight: 300;
+      line-height: 1;
+    }
+
+    .accordion-header:hover .accordion-icon {
+      color: #8a7e6e;
+    }
+
+    .accordion-item.open .accordion-icon {
+      transform: rotate(45deg);
+    }
+
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.45s ease;
+    }
+
+    .accordion-item.open .accordion-body {
+      max-height: 2000px;
+    }
+
+    .accordion-content {
+      padding: 0 0 1.5rem 0;
+    }
+
+    /* ─── Entry styling ─── */
+    .entry {
+      margin-bottom: 1.25rem;
+    }
+
+    .entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .entry-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.3rem;
+    }
+
+    .entry-title {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #3a3028;
+    }
+
+    .entry-title em {
+      font-weight: 400;
+      font-style: italic;
+      color: #6a5f52;
+    }
+
+    .entry-date {
+      font-size: 0.7rem;
+      color: #a09585;
+      letter-spacing: 0.03em;
+      white-space: nowrap;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .entry-detail {
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #5a5347;
+      margin-top: 0.2rem;
+    }
+
+    .entry-detail ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .entry-detail li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .entry-detail li::before {
+      content: '\00B7';
+      position: absolute;
+      left: 0;
+      color: #b0a490;
+      font-weight: 700;
+    }
+
+    .entry-rule {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, #d4cbb8, transparent);
+      margin-top: 1rem;
+    }
+
+    /* ─── Achievement list ─── */
+    .achievement-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .achievement-list > li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.5rem;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #5a5347;
+    }
+
+    .achievement-list > li::before {
+      content: '\00B7';
+      position: absolute;
+      left: 0;
+      color: #b0a490;
+      font-weight: 700;
+    }
+
+    .achievement-sub {
+      margin-top: 0.3rem;
+      padding-left: 1rem;
+      list-style: none;
+    }
+
+    .achievement-sub li {
+      padding-left: 1rem;
+      position: relative;
+      font-size: 0.75rem;
+      color: #6a6055;
+      margin-bottom: 0.25rem;
+    }
+
+    .achievement-sub li::before {
+      content: '\2013';
+      position: absolute;
+      left: 0;
+      color: #c0b8a8;
+    }
+
+    /* ─── Skills list ─── */
+    .skills-list {
+      list-style: none;
+      padding: 0;
+    }
+
+    .skills-list li {
+      position: relative;
+      padding-left: 1rem;
+      margin-bottom: 0.4rem;
+      font-size: 0.78rem;
+      line-height: 1.6;
+      color: #5a5347;
+    }
+
+    .skills-list li::before {
+      content: '\00B7';
+      position: absolute;
+      left: 0;
+      color: #b0a490;
+      font-weight: 700;
+    }
+
+    /* ─── Footer ─── */
+    .footer {
+      margin-top: 3rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #d4cbb8;
+      text-align: center;
+      font-size: 0.65rem;
+      color: #b0a898;
+      letter-spacing: 0.05em;
+    }
+
+    /* ─── Responsive ─── */
+    @media (max-width: 600px) {
+      .page {
+        padding: 2.5rem 1.25rem 2rem;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 1.5rem;
+      }
+
+      .photo {
+        width: 140px;
+        height: 175px;
+      }
+
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .tagline {
+        max-width: 100%;
+      }
+
+      .rule {
+        margin: 0.7rem auto;
+      }
+
+      .contact {
+        justify-content: center;
+      }
+
+      .entry-header {
+        flex-direction: column;
+        gap: 0.15rem;
+      }
+    }
+
+    /* ─── Print stylesheet: formatted CV ─── */
+    @media print {
+      body {
+        background: #fff;
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 10pt;
+        color: #111;
+      }
+
+      body::before {
+        display: none;
+      }
+
+      .page {
+        max-width: 100%;
+        padding: 0;
+      }
+
+      .header {
+        display: block;
+        text-align: center;
+        margin-bottom: 0.5rem;
+        border-bottom: 1.5pt solid #111;
+        padding-bottom: 0.5rem;
+      }
+
+      .photo {
+        display: none;
+      }
+
+      h1 {
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 16pt;
+        font-weight: 700;
+        color: #111;
+        letter-spacing: 0;
+      }
+
+      .rule {
+        display: none;
+      }
+
+      .tagline {
+        display: none;
+      }
+
+      .contact {
+        justify-content: center;
+        font-size: 9pt;
+        color: #444;
+        margin-top: 0.3rem;
+        gap: 0.5rem;
+      }
+
+      .contact a {
+        color: #444;
+      }
+
+      .accordion-item {
+        border: none !important;
+      }
+
+      .accordion-header {
+        padding: 0.5rem 0 0.15rem;
+        cursor: default;
+      }
+
+      .accordion-title {
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 10pt;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: #111;
+        border-bottom: 0.5pt solid #999;
+        display: block;
+        width: 100%;
+        padding-bottom: 0.15rem;
+      }
+
+      .accordion-icon {
+        display: none;
+      }
+
+      .accordion-body {
+        max-height: none !important;
+        overflow: visible;
+      }
+
+      .accordion-content {
+        padding: 0.25rem 0 0.5rem;
+      }
+
+      .entry {
+        margin-bottom: 0.5rem;
+      }
+
+      .entry-title {
+        font-family: 'Inter', Arial, sans-serif;
+        font-size: 9.5pt;
+        font-weight: 600;
+        color: #111;
+      }
+
+      .entry-title em {
+        color: #333;
+      }
+
+      .entry-date {
+        font-size: 8.5pt;
+        color: #555;
+      }
+
+      .entry-detail {
+        font-size: 9pt;
+        color: #333;
+      }
+
+      .entry-rule {
+        display: none;
+      }
+
+      .achievement-list > li,
+      .skills-list li {
+        font-size: 9pt;
+        color: #333;
+      }
+
+      .footer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <header class="header">
+    <div class="photo">
+      <img src="photo.jpg" alt="Hana Curphey" width="160" height="200">
+    </div>
+    <div class="header-text">
+      <h1>Hana Curphey</h1>
+      <div class="rule"></div>
+      <p class="tagline">Aspiring barrister with a focus on criminal and civil law. Durham law graduate, Gray's Inn scholar, and County Court Advocate seeking pupillage.</p>
+      <div class="contact">
+        <a href="mailto:hana@curphey.com">hana@curphey.com</a>
+        <span class="dot"></span>
+        <a href="https://www.linkedin.com/in/hana-curphey" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="accordion">
+
+    <!-- Education -->
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        <span class="accordion-title">Education</span>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Bar Training Course · <em>BPP University, Distinction</em></span>
+              <span class="entry-date">2024–2025</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Awarded distinctions in every module: Civil Litigation (80), Criminal Litigation (87), Drafting (88), Opinion Writing and Legal Research (88), Submission Advocacy (86), and Oral Skills (80)</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Law (LLB) · <em>Durham University, 2:1 Honours</em></span>
+              <span class="entry-date">2020–2023</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Dissertation: 'AIDS Transmission Jurisprudence: Disgust, the Current Legal Framework, and Proposed Reforms' (1st Class)</li>
+                <li>Key modules: Law and Medicine (ranked first in cohort), Advanced Issues in Criminal Law, Advanced Issues in Public Law, Contemporary Issues in Biolaw, Legal Philosophy</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Experience -->
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        <span class="accordion-title">Experience</span>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">County Court Advocate · <em>LPC Law</em></span>
+              <span class="entry-date">Dec 2025–present</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Conducting legal research, taking and acting on instructions, communicating clearly verbally and in writing, conferencing with solicitors, counsel, and litigants-in-person, drafting attendance notes, and providing oral advocacy before District Judges at 85+ County Court hearings</li>
+                <li>Demonstrating excellent interpersonal skills, client care, and an ability to quickly build rapport, resulting in requests for repeat instruction</li>
+                <li>Performing paralegal-level administrative duties, including invoicing, document review, assembling bundles, preparing court-ready applications and draft orders, confidential file handling, arranging travel, and diary management</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Bookkeeping Assistant · <em>Albion Consulting</em></span>
+              <span class="entry-date">Apr 2025–present</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Providing basic accounting services, demonstrating excellent numeracy and attention to detail, liaising directly with clients, record-keeping, time-recording, and using various business/practice management programmes to help manage small businesses' finances</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Protest Legal Observer · <em>Green and Black Cross</em></span>
+              <span class="entry-date">Dec 2024–Mar 2025</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Provided on-the-spot protest and police station rights information to protesters, demonstrated applied understanding of protest and public order law, made contemporaneous notes of police action, and liaised with police for arrestee support</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Mini-Pupil (Crime &amp; Civil) · <em>7 Bedford Row</em></span>
+              <span class="entry-date">Jan 2024</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Observed civil disclosure hearing against a litigant-in-person in an action against the police, examined jury bundles, learned about rules surrounding opening and closing arguments, and analysed complex EncroChat evidence in a major multi-national drugs smuggling trial</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Specialist · <em>Apple</em></span>
+              <span class="entry-date">Nov 2023–Dec 2025</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Provided sales and technical support, demonstrated excellent time management and multitasking skills in a fast-paced environment, triaged for appointments, adapted to various accessibility needs and language barriers, and explained technical concepts to a lay audience</li>
+                <li>Analysed global customer satisfaction data to identify key areas of growth, re-designing the in-store process to prioritise cross-team collaboration, and delivering a presentation introducing the new system to achieve store-record customer satisfaction levels</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Mini-Pupil (Crime) · <em>New Park Court, Newcastle</em></span>
+              <span class="entry-date">Sep 2023</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Examined evidence via the CCDCS, attended pre-trial conferences with lay-clients to learn about taking instructions and offering advice on plea, and attended PTPH and sentencing hearings to learn about case management and effective sentencing mitigation</li>
+              </ul>
+            </div>
+            <div class="entry-rule"></div>
+          </div>
+          <div class="entry">
+            <div class="entry-header">
+              <span class="entry-title">Mini-Pupil (Crime) · <em>187 Chambers</em></span>
+              <span class="entry-date">Apr 2023</span>
+            </div>
+            <div class="entry-detail">
+              <ul>
+                <li>Learned about cross-party cooperation and pre-trial applications to exclude evidence; conferenced with clients being held on remand</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Achievements -->
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        <span class="accordion-title">Achievements</span>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <ul class="achievement-list">
+            <li>Gray's Inn Patrick Back Bar Course Scholar 2024</li>
+            <li>Author, <em>The Socialist Lawyer</em> (magazine of the Haldane Society of Socialist Lawyers)
+              <ul class="achievement-sub">
+                <li>"Arresting Legal Observers" (Issue 98) – a critical examination of powers of arrest at protest under the Public Order Act 2023 in the context of a then-ongoing action against the police</li>
+                <li>"The OSA is DOA: Online Safety Act 2023 Goes into Effect" (Issue 99) – a human rights-focused update on the digital surveillance and freedom of expression implications of the OSA 2023</li>
+              </ul>
+            </li>
+            <li>Winner, Durham University Mooting Society Novice Cup 2022, judged by HHJ Jonathan Carroll</li>
+            <li>Winner, Durham University Michaelmas Mock Trial Tournament 2020, judged by The Hon. Mr Justice Goss</li>
+            <li>Winner, Durham University Bar Society 'Best Advocate' Award 2023</li>
+            <li>Member, the Howard League for Penal Reform</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Skills -->
+    <div class="accordion-item">
+      <div class="accordion-header" onclick="toggle(this)">
+        <span class="accordion-title">Skills</span>
+        <span class="accordion-icon">+</span>
+      </div>
+      <div class="accordion-body">
+        <div class="accordion-content">
+          <ul class="skills-list">
+            <li>500+ hours of legal research experience across various platforms, including LexisNexis, Westlaw, and practitioners' texts</li>
+            <li>Familiarity with criminal and civil legal aid (LAA) procedure</li>
+            <li>Fluency in the Microsoft Office suite, including Word and Excel, with a comprehensive knowledge of digital security, privacy, and encryption</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <footer class="footer">
+    hanacurphey.com
+  </footer>
+
+</div>
+
+<script>
+  function toggle(header) {
+    var item = header.parentElement;
+    var wasOpen = item.classList.contains('open');
+    var items = document.querySelectorAll('.accordion-item');
+    for (var i = 0; i < items.length; i++) {
+      items[i].classList.remove('open');
+    }
+    if (!wasOpen) {
+      item.classList.add('open');
+    }
+  }
+</script>
+
+</body>
+</html>
